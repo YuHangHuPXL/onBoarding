@@ -43,7 +43,7 @@ export const authService: AuthService = {
 		return response.data
 	},
 	getCurrentUser: async (): Promise<User> => {
-		const response = await httpClient.get('/oauth/userinfo')
+		const response = await httpClient.get('/auth/userinfo')
 
 		userSchema.parse(response.data)
 
