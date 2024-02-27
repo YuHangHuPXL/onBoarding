@@ -2,11 +2,11 @@
 
 import { z } from 'zod'
 
-const authTokenSchema = z.object({
+export const authTokenSchema = z.object({
 	access_token: z.string(),
 	token_type: z.string(),
 	expires_in: z.number(),
 	refresh_token: z.string(),
 })
 
-export type AuthToken = z.infer<typeof authTokenSchema>
+export type AuthTokenModel = z.infer<typeof authTokenSchema>

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const user = z.object({
+export const userSchema = z.object({
 	uuid: z.string().uuid(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
@@ -10,4 +10,4 @@ const user = z.object({
 	role: z.string(),
 })
 
-export type User = z.infer<typeof user>
+export type User = z.infer<typeof userSchema>
