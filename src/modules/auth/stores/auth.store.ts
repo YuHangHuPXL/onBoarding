@@ -11,12 +11,12 @@ export const useAuthStore = defineStore('auth', () => {
 	const accessToken = useStorage<string | null>('accessToken', null, localStorage)
 	const isAuthenticated = computed<boolean>(() => currentUser.value === null)
 
-	async function getCurrentUser(): Promise<UserInfo> {
+	async function getUserInfo(): Promise<UserInfo> {
 		if (currentUser.value !== null) {
 			return currentUser.value
 		}
 
-		currentUser.value = authService.getCurrentUser()
+		currentUser.value = authService.getUserInfo()
 		return currentUser.value!
 	}
 
@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
 	return {
 		currentUser,
 		isAuthenticated,
-		getCurrentUser,
+		getUserInfo,
 		setCurrentUser,
 		login,
 		logout,

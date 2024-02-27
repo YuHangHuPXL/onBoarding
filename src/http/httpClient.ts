@@ -11,7 +11,7 @@ const httpClient: AxiosInstance = axios.create({
 
 httpClient.interceptors.request.use(
 	(config) => {
-		config.headers['Authorization'] = `Bearer `
+		config.headers['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`
 		return config
 	},
 	(error) => {

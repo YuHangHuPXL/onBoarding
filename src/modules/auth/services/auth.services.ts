@@ -3,8 +3,8 @@
 import httpClient from '@/http/httpClient'
 import type { AuthTokenModel } from '@/models/auth/authToken.model'
 import { authTokenSchema } from '@/models/auth/authToken.model'
-import { userSchema } from '@/models/user/user.model'
 import type { UserInfo } from '@/models/user/userInfo.model'
+import { userInfoSchema } from '@/models/user/userInfo.model'
 
 interface AuthService {
 	login: (username: string, password: string) => Promise<AuthTokenModel>
@@ -26,7 +26,7 @@ export const authService: AuthService = {
 	getUserInfo: async (): Promise<UserInfo> => {
 		const response = await httpClient.get('/auth/userinfo')
 
-		userSchema.parse(response.data)
+		userInfoSchema.parse(response.data)
 
 		return response.data
 	},
