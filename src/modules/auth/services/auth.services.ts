@@ -3,12 +3,12 @@
 import httpClient from '@/http/httpClient'
 import type { AuthTokenModel } from '@/models/auth/authToken.model'
 import { authTokenSchema } from '@/models/auth/authToken.model'
-import type { User } from '@/models/user/user.model'
 import { userSchema } from '@/models/user/user.model'
+import type { UserInfo } from '@/models/user/userInfo.model'
 
 interface AuthService {
 	login: (username: string, password: string) => Promise<AuthTokenModel>
-	getCurrentUser: () => Promise<User>
+	getUserInfo: () => Promise<UserInfo>
 	logout: () => Promise<void>
 }
 
@@ -23,6 +23,13 @@ function encodeQueryData(data: Record<string, string>): URLSearchParams {
 }
 
 export const authService: AuthService = {
+	getUserInfo: async (): Promise<UserInfo> => {
+		const response = await httpClient.get('/auth/userinfo')
+
+		userSchema.parse(response.data)
+
+		return response.data
+	},
 	logout: async (): Promise<void> => {
 		await httpClient.post('auth/revoke')
 	},
@@ -43,13 +50,6 @@ export const authService: AuthService = {
 		const response = await httpClient.post('/auth/token', formData, config)
 
 		authTokenSchema.parse(response.data)
-
-		return response.data
-	},
-	getCurrentUser: async (): Promise<User> => {
-		const response = await httpClient.get('/auth/userinfo')
-
-		userSchema.parse(response.data)
 
 		return response.data
 	},
