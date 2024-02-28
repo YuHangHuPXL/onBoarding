@@ -1,13 +1,15 @@
 /*eslint-disable camelcase*/
 
 import httpClient from '@/http/httpClient'
-import type { AuthTokenModel } from '@/models/auth/authToken.model'
+import type { AuthToken } from '@/models/auth/authToken.model'
 import { authTokenSchema } from '@/models/auth/authToken.model'
+import type { User } from '@/models/user/user.model'
+import { userSchema } from '@/models/user/user.model'
 import type { UserInfo } from '@/models/user/userInfo.model'
 import { userInfoSchema } from '@/models/user/userInfo.model'
 
 interface AuthService {
-	login: (username: string, password: string) => Promise<AuthTokenModel>
+	login: (username: string, password: string) => Promise<AuthToken>
 	getUserInfo: () => Promise<UserInfo>
 	logout: () => Promise<void>
 }
@@ -22,6 +24,12 @@ function encodeQueryData(data: Record<string, string>): URLSearchParams {
 	return params
 }
 
+enum GrantType {
+	password = 'password',
+	authorization_code = 'authorization_code',
+	client_credentials = 'client_credentials',
+}
+
 export const authService: AuthService = {
 	getUserInfo: async (): Promise<UserInfo> => {
 		const response = await httpClient.get('/auth/userinfo')
@@ -33,11 +41,11 @@ export const authService: AuthService = {
 	logout: async (): Promise<void> => {
 		await httpClient.post('auth/revoke')
 	},
-	login: async (username: string, password: string): Promise<AuthTokenModel> => {
+	login: async (username: string, password: string): Promise<AuthToken> => {
 		const formData = encodeQueryData({
 			client_id: import.meta.env.VITE_CLIENT_ID,
 			client_secret: import.meta.env.VITE_CLIENT_SECRET,
-			grant_type: 'password',
+			grant_type: GrantType.password,
 			password: password,
 			username: username,
 			scope: 'read write',
@@ -50,6 +58,13 @@ export const authService: AuthService = {
 		const response = await httpClient.post('/auth/token', formData, config)
 
 		authTokenSchema.parse(response.data)
+
+		return response.data
+	},
+	getCurrentUser: async (): Promise<User> => {
+		const response = await httpClient.get('/auth/userinfo')
+
+		userSchema.parse(response.data)
 
 		return response.data
 	},
