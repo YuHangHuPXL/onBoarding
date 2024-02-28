@@ -9,14 +9,14 @@ import { authService } from '@/modules/auth/services/auth.services'
 export const useAuthStore = defineStore('auth', () => {
 	const currentUser = ref<UserInfo | null>(null)
 	const accessToken = useStorage<string | null>('accessToken', null, localStorage)
-	const isAuthenticated = computed<boolean>(() => currentUser.value === null)
+	const isAuthenticated = computed<boolean>(() => accessToken.value !== null)
 
 	async function getUserInfo(): Promise<UserInfo> {
 		if (currentUser.value !== null) {
 			return currentUser.value
 		}
 
-		currentUser.value = authService.getUserInfo()
+		currentUser.value = await authService.getUserInfo()
 		return currentUser.value!
 	}
 
@@ -32,6 +32,7 @@ export const useAuthStore = defineStore('auth', () => {
 	async function logout(): Promise<void> {
 		await authService.logout()
 		setCurrentUser(null)
+		accessToken.value = null
 	}
 
 	return {
