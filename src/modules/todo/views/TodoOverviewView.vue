@@ -1,3 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+</script>
 
-<template><h2>Todo's</h2></template>
+<template>
+	<h2>
+		{{ t('shared.todos_title') }}
+	</h2>
+</template>

@@ -1,7 +1,20 @@
 {
-  "titles": {
-    "404": "404 Not found",
-    "login": "Login",
-    "todo": "Todos"
+  "login": {
+    "bad_credentials_message": "Bad crendentials",
+    "continue": "Continue",
+    "email_label": "Email address",
+    "forgot_password": "Forgot password?",
+    "input_placeholder": "Type here...",
+    "no_account_question": "Don't have an account yet?",
+    "no_account_suggestion": "Create one!",
+    "password_label": "Password",
+    "username_label": "Username",
+    "welcome_message": "At mi amet vulputate ut dictum. Quam ac ut a feugiat.",
+    "welcome_title": "Welcome!"
+  },
+  "shared": {
+    "login_title": "Login",
+    "not_found_title": "404 not found",
+    "todos_title": "Todos"
   }
 }

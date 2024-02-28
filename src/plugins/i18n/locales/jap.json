@@ -1,7 +1,20 @@
 {
-  "titles": {
-    "404": "404 not foundo",
-    "login": "Longindo",
-    "todo": "Aoi Todos"
+  "login": {
+    "bad_credentials_message": "No comprendo",
+    "continue": "Continuedo",
+    "email_label": "Email addressdo",
+    "forgot_password": "Forgot passwardo?",
+    "input_placeholder": "Typo here...",
+    "no_account_question": "Don't have an account yeto?",
+    "no_account_suggestion": "Createo one!",
+    "password_label": "Passwordo",
+    "username_label": "Usernamedo",
+    "welcome_message": "At mi amet vulputate ut dictum. Quam ac ut a feugiato.",
+    "welcome_title": "Welcomo!"
+  },
+  "shared": {
+    "login_title": "Longindo",
+    "not_found_title": "404 not foundo",
+    "todos_title": "Aoi Todos"
   }
 }
