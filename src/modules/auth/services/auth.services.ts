@@ -3,8 +3,6 @@
 import httpClient from '@/http/httpClient'
 import type { AuthToken } from '@/models/auth/authToken.model'
 import { authTokenSchema } from '@/models/auth/authToken.model'
-import type { User } from '@/models/user/user.model'
-import { userSchema } from '@/models/user/user.model'
 import type { UserInfo } from '@/models/user/userInfo.model'
 import { userInfoSchema } from '@/models/user/userInfo.model'
 
@@ -58,13 +56,6 @@ export const authService: AuthService = {
 		const response = await httpClient.post('/auth/token', formData, config)
 
 		authTokenSchema.parse(response.data)
-
-		return response.data
-	},
-	getCurrentUser: async (): Promise<User> => {
-		const response = await httpClient.get('/auth/userinfo')
-
-		userSchema.parse(response.data)
 
 		return response.data
 	},
