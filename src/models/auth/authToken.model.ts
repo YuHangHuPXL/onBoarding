@@ -9,4 +9,4 @@ export const authTokenSchema = z.object({
 	refresh_token: z.string(),
 })
 
-export type AuthTokenModel = z.infer<typeof authTokenSchema>
+export type AuthToken = z.infer<typeof authTokenSchema>
