@@ -50,7 +50,7 @@ function hidePassword(): void {
 				<input
 					id="username-input"
 					v-model="username"
-					class="bg-light-periWinkel h-12 w-full rounded-lg p-3 invalid:border-red-600 invalid:outline-none invalid:[&:not(:focus)]:border"
+					class="bg-light-periWinkel invalid: h-12 w-full rounded-lg p-3 invalid:border-red-600 invalid:outline-none invalid:[&:not(:focus)]:border invalid:[&:not(:focus)]:text-red-500"
 					pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"
 					:placeholder="t('login.input_placeholder')"
 					type="text"
