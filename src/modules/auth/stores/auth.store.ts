@@ -9,7 +9,7 @@ import { authService } from '@/modules/auth/services/auth.services'
 export const useAuthStore = defineStore('auth', () => {
 	const currentUser = ref<UserInfo | null>(null)
 	const accessToken = useStorage<string | null>('accessToken', null, localStorage)
-	const isAuthenticated = computed<boolean>(() => localStorage.getItem('accessToken') !== null)
+	const isAuthenticated = computed<boolean>(() => accessToken.value !== null)
 
 	async function getUserInfo(): Promise<UserInfo> {
 		if (currentUser.value !== null) {

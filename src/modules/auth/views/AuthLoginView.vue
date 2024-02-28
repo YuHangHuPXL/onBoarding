@@ -12,5 +12,3 @@ async function login(): Promise<void> {
 	<h2>login</h2>
 	<button @click="login" />
 </template>
-
-<style scoped></style>
