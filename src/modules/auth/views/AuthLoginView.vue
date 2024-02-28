@@ -10,7 +10,7 @@ const { t } = useI18n()
 const authStore = useAuthStore()
 const router = useRouter()
 
-const errorMessage = ref<string>('')
+const errorMessage = ref<string>(t('login.input_placeholder'))
 
 async function handleLogin(data: { username: string; password: string }): Promise<void> {
 	try {
@@ -25,10 +25,25 @@ async function handleLogin(data: { username: string; password: string }): Promis
 </script>
 
 <template>
-	<h2>{{ t('login.welcome_title') }}</h2>
-	<p>{{ t('login.welcome_message') }}</p>
-	<p>{{ errorMessage }}</p>
-	<AuthLoginForm @submit="handleLogin" />
-	<span>{{ t('login.no_account_question') }}</span>
-	<span>{{ t('login.no_account_suggestion') }}</span>
+	<div class="container mx-auto flex h-screen w-[361px] items-center">
+		<div>
+			<div
+				class="rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700"
+				:class="{ invisible: errorMessage === t('login.input_placeholder') }"
+				role="alert"
+			>
+				<span class="block sm:inline">{{ errorMessage }}</span>
+			</div>
+			<h2 class="text-3xl font-bold">{{ t('login.welcome_title') }}</h2>
+			<p class="mb-2 text-[17px] font-semibold">{{ t('login.welcome_message') }}</p>
+			<AuthLoginForm
+				class="mb-1"
+				@submit="handleLogin"
+			/>
+			<div class="inline-flex w-full justify-center">
+				<p class="mr-1 text-sm">{{ t('login.no_account_question') }}</p>
+				<p class="text-sm font-semibold">{{ t('login.no_account_suggestion') }}</p>
+			</div>
+		</div>
+	</div>
 </template>

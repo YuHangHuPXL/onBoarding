@@ -4,12 +4,13 @@
     "continue": "Continuedo",
     "email_label": "Email addressdo",
     "forgot_password": "Forgot passwardo?",
-    "input_placeholder": "Typo here...",
+    "input_placeholder": "Emailo",
     "no_account_question": "Don't have an account yeto?",
     "no_account_suggestion": "Createo one!",
     "password_label": "Passwordo",
+    "password_placeholder": "passwordo",
     "username_label": "Usernamedo",
-    "welcome_message": "At mi amet vulputate ut dictum. Quam ac ut a feugiato.",
+    "welcome_message": "私はこの言葉を聞いています。",
     "welcome_title": "Welcomo!"
   },
   "shared": {

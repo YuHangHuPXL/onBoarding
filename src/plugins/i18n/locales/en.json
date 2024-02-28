@@ -1,13 +1,14 @@
 {
   "login": {
-    "bad_credentials_message": "Bad crendentials",
+    "bad_credentials_message": "Bad credentials",
     "continue": "Continue",
     "email_label": "Email address",
     "forgot_password": "Forgot password?",
-    "input_placeholder": "Type here...",
+    "input_placeholder": "Emailo",
     "no_account_question": "Don't have an account yet?",
     "no_account_suggestion": "Create one!",
     "password_label": "Password",
+    "password_placeholder": "password",
     "username_label": "Username",
     "welcome_message": "At mi amet vulputate ut dictum. Quam ac ut a feugiat.",
     "welcome_title": "Welcome!"
