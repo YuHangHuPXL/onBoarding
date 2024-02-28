@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/modules/auth/stores/auth.store'
-
-const store = useAuthStore()
-
-async function login(): Promise<void> {
-	await store.login({ username: 'yuhang@yuhang.be', password: 'string' })
-}
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 </script>
 
 <template>
-	<h2>login</h2>
-	<button @click="login" />
+	<h2>{{ t('titles.login') }}</h2>
 </template>

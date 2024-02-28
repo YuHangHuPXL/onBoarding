@@ -1,6 +1,7 @@
 {
-  "message": {
-    "Thomas": "Thomas",
-    "the_world": "The world"
+  "titles": {
+    "404": "404 Not found",
+    "login": "Login",
+    "todo": "Todos"
   }
 }

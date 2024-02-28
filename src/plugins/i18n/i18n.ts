@@ -12,7 +12,7 @@ const messages = {
 	[Locale.JAP]: jap,
 }
 
-const defaultLocale = Locale.EN
+const defaultLocale = Locale.JAP
 
 export const i18nPlugin = createI18n({
 	messages,

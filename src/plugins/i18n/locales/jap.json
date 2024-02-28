@@ -1,5 +1,7 @@
 {
-  "message": {
-    "Thomas": "Tomas"
+  "titles": {
+    "404": "404 not foundo",
+    "login": "Longindo",
+    "todo": "Aoi Todos"
   }
 }
