@@ -7,4 +7,4 @@ export const authLoginSchema = z.object({
 	password: z.string(),
 })
 
-export type AuthLoginForm = z.infer<typeof authLoginSchema>
+export type AuthLoginInput = z.infer<typeof authLoginSchema>

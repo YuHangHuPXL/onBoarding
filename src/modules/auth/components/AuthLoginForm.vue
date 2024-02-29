@@ -2,12 +2,15 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import type { AuthLoginForm } from '@/models/auth/authLoginForm.model'
+import AppButton from '@/components/button/AppButton.vue'
+import AppInput from '@/components/input/AppInput.vue'
+import EyeIcon from '@/icons/EyeIcon.vue'
+import type { AuthLoginInput } from '@/models/auth/authLoginForm.model'
 
 const { t } = useI18n()
 
 const emit = defineEmits<{
-	submit: [value: AuthLoginForm]
+	submit: [value: AuthLoginInput]
 }>()
 
 const username = ref<string>('')
@@ -19,7 +22,7 @@ const hasInputFilledIn = computed<boolean>(() => {
 })
 
 function handleSubmit(): void {
-	const formData: AuthLoginForm = {
+	const formData: AuthLoginInput = {
 		username: username.value,
 		password: password.value,
 	}
@@ -47,13 +50,10 @@ function hidePassword(): void {
 					for="username-input"
 					>{{ t('login.email_label') }}</label
 				>
-				<input
-					id="username-input"
+				<AppInput
 					v-model="username"
-					class="bg-light-periWinkel invalid: h-12 w-full rounded-lg p-3 invalid:border-red-600 invalid:outline-none invalid:[&:not(:focus)]:border invalid:[&:not(:focus)]:text-red-500"
-					pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"
+					input-type="text"
 					:placeholder="t('login.input_placeholder')"
-					type="text"
 				/>
 			</div>
 			<div class="mb-1 grid">
@@ -63,13 +63,10 @@ function hidePassword(): void {
 					>{{ t('login.password_label') }}</label
 				>
 				<div class="relative">
-					<input
-						id="password-input"
+					<AppInput
 						v-model="password"
-						class="bg-light-periWinkel h-12 w-full rounded-lg p-3 invalid:border-red-600 invalid:outline-none invalid:[&:not(:focus)]:border"
-						pattern=".{5,}"
+						input-type="password"
 						:placeholder="t('login.password_placeholder')"
-						:type="passwordFieldType"
 					/>
 					<button
 						class="absolute bottom-2.5 right-2.5"
@@ -77,57 +74,18 @@ function hidePassword(): void {
 						@mouseleave="hidePassword"
 						@mouseup="hidePassword"
 					>
-						<svg
-							fill="none"
-							height="24"
-							viewBox="0 0 24 24"
-							width="24"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M3.11824 12.467C2.96124 12.176 2.96124 11.823 3.11824 11.532C5.01024 8.033 8.50524 5 12.0002 5C15.4952 5 18.9902 8.033 20.8822 11.533C21.0392 11.824 21.0392 12.177 20.8822 12.468C18.9902 15.967 15.4952 19 12.0002 19C8.50524 19 5.01024 15.967 3.11824 12.467V12.467Z"
-								stroke="#1B212D"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="1.5"
-							/>
-							<path
-								d="M14.1213 9.87868C15.2929 11.0503 15.2929 12.9497 14.1213 14.1213C12.9497 15.2929 11.0502 15.2929 9.87868 14.1213C8.70711 12.9497 8.70711 11.0503 9.87868 9.87868C11.0502 8.70711 12.9497 8.70711 14.1213 9.87868Z"
-								stroke="#1B212D"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="1.4286"
-							/>
-						</svg>
+						<EyeIcon />
 					</button>
 				</div>
 			</div>
 			<p class="mb-16 text-xs font-semibold">{{ t('login.forgot_password') }}</p>
-
-			<button
-				class="bg-dark-sanJuan inline-flex h-12 w-full items-center justify-center rounded-md text-white"
-				:class="{ 'cursor-not-allowed': hasInputFilledIn }"
-				:disabled="hasInputFilledIn"
-				@click="handleSubmit"
-			>
-				<span>{{ t('login.continue') }}</span>
-				<svg
-					class="ml-2.5 mt-1"
-					fill="none"
-					height="10"
-					viewBox="0 0 6 10"
-					width="8"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M1 9L5 5L1 1"
-						stroke="white"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="1.5"
-					/>
-				</svg>
-			</button>
+			<AppButton
+				:button-text="t('login.continue')"
+				class="bg-dark-sanJuan"
+				:has-input-filled-in="hasInputFilledIn"
+				:has-right-arrow="true"
+				@submit="handleSubmit"
+			/>
 		</form>
 	</div>
 </template>

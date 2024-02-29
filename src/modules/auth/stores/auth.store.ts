@@ -2,7 +2,7 @@ import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
-import type { AuthLoginForm } from '@/models/auth/authLoginForm.model'
+import type { AuthLoginInput } from '@/models/auth/authLoginForm.model'
 import type { UserInfo } from '@/models/user/userInfo.model'
 import { authService } from '@/modules/auth/services/auth.services'
 
@@ -24,7 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
 		currentUser.value = userInfo
 	}
 
-	async function login(data: AuthLoginForm): Promise<void> {
+	async function login(data: AuthLoginInput): Promise<void> {
 		const response = await authService.login(data.username, data.password)
 		accessToken.value = response.access_token
 	}

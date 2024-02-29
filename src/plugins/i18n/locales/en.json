@@ -8,12 +8,13 @@
     "no_account_question": "Don't have an account yet?",
     "no_account_suggestion": "Create one!",
     "password_label": "Password",
-    "password_placeholder": "password",
+    "password_placeholder": "Password",
     "username_label": "Username",
-    "welcome_message": "At mi amet vulputate ut dictum. Quam ac ut a feugiat.",
+    "welcome_message": "todo todo todo todo todo todo todo todo todo",
     "welcome_title": "Welcome!"
   },
   "shared": {
+    "app_text_placeholder": "At mi amet vulputate ut dictum. Quam ac ut a feugiat.  ",
     "login_title": "Login",
     "not_found_title": "404 not found",
     "todos_title": "Todos"

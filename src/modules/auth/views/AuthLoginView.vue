@@ -3,6 +3,9 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
+import AppText from '@/components/text/AppText.vue'
+import AppTitle from '@/components/title/AppTitle.vue'
+import type { AuthLoginInput } from '@/models/auth/authLoginForm.model'
 import AuthLoginForm from '@/modules/auth/components/AuthLoginForm.vue'
 import { useAuthStore } from '@/modules/auth/stores/auth.store'
 
@@ -12,7 +15,7 @@ const router = useRouter()
 
 const errorMessage = ref<string>(t('login.input_placeholder'))
 
-async function handleLogin(data: { username: string; password: string }): Promise<void> {
+async function handleLogin(data: AuthLoginInput): Promise<void> {
 	try {
 		await authStore.login(data)
 		await router.push('/todos')
@@ -34,15 +37,24 @@ async function handleLogin(data: { username: string; password: string }): Promis
 			>
 				<span class="block sm:inline">{{ errorMessage }}</span>
 			</div>
-			<h2 class="text-3xl font-bold">{{ t('login.welcome_title') }}</h2>
-			<p class="mb-2 text-[17px] font-semibold">{{ t('login.welcome_message') }}</p>
+			<AppTitle :title-text="t('login.welcome_title')" />
+			<AppText
+				class="mb-2 text-[17px] font-semibold"
+				:text="t('login.welcome_message')"
+			/>
 			<AuthLoginForm
 				class="mb-1"
 				@submit="handleLogin"
 			/>
 			<div class="inline-flex w-full justify-center">
-				<p class="mr-1 text-sm">{{ t('login.no_account_question') }}</p>
-				<p class="text-sm font-semibold">{{ t('login.no_account_suggestion') }}</p>
+				<AppText
+					class="mr-1 text-sm"
+					:text="t('login.no_account_question')"
+				/>
+				<AppText
+					class="text-sm font-semibold"
+					:text="t('login.no_account_suggestion')"
+				/>
 			</div>
 		</div>
 	</div>
