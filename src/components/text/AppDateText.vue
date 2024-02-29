@@ -1,0 +1,20 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+
+import AppText from '@/components/text/AppText.vue'
+import CalendarIcon from '@/icons/CalendarIcon.vue'
+import { formatDate } from '@/utils/dates.util'
+
+const props = defineProps<{
+	date: Date
+}>()
+
+const formatedDate = computed<string>(() => {
+	return formatDate(props.date)
+})
+</script>
+
+<template>
+	<CalendarIcon />
+	<AppText :text="formatedDate" />
+</template>

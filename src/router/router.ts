@@ -18,7 +18,7 @@ const routes: RouteRecordRaw[] = [
 			{
 				path: 'todos',
 				name: 'todos',
-				component: async () => import('@/modules/todo/views/TodoOverviewView.vue'),
+				component: async () => import('@/modules/todos/features/overview/views/TodoOverviewView.vue'),
 			},
 		],
 	},

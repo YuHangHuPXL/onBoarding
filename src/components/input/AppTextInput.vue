@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		placeholder: string
 		inputType: string
@@ -36,9 +35,9 @@ function toggleHasBlurred(): void {
 	<input
 		v-model="input"
 		class="h-12 w-full rounded-lg bg-light-periWinkel p-3"
-		:class="{ 'border border-red-500 outline-none': !isValid && isDirty && !isFocussed }"
-		:placeholder="placeholder"
-		:type="inputType"
+		:class="{ 'border border-red-500 outline-none': !props.isValid && props.isDirty && !isFocussed }"
+		:placeholder="props.placeholder"
+		:type="props.inputType"
 		@focusin="toggleHasBlurred"
 		@focusout="toggleHasBlurred"
 	/>

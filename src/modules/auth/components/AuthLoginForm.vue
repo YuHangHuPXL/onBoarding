@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppButton from '@/components/button/AppButton.vue'
-import AppInput from '@/components/input/AppInput.vue'
+import AppInput from '@/components/input/AppTextInput.vue'
 import EyeIcon from '@/icons/EyeIcon.vue'
 import { type AuthLoginInput, authLoginSchema } from '@/models/auth/authLoginForm.model'
 
