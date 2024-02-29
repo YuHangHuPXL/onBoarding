@@ -3,8 +3,8 @@
 import { z } from 'zod'
 
 export const authLoginSchema = z.object({
-	username: z.string(),
-	password: z.string(),
+	username: z.string().email(),
+	password: z.string().min(5),
 })
 
 export type AuthLoginInput = z.infer<typeof authLoginSchema>
