@@ -20,11 +20,3 @@ export const i18nPlugin = createI18n({
 	fallbackLocale: defaultLocale,
 	locale: defaultLocale,
 })
-
-export interface Todo {
-	uuid: string
-	title: string
-	description: string
-	deadline: string
-	isCompleted: boolean
-}

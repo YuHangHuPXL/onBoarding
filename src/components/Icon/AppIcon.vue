@@ -14,7 +14,6 @@ watch(
 	() => props.icon,
 	async () => {
 		const resolvedComponent = await icons[props.icon]
-		console.log(resolvedComponent)
 
 		svgComponent.value = resolvedComponent.default
 	},

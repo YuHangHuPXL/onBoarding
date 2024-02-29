@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AppIcon from '@/components/AppIcon.vue'
+import AppTitle from '@/components/title/AppTitle.vue'
+import { useTodoIndexQuery } from '@/modules/todos/api/queries/todoIndex.query'
+import TodoList from '@/modules/todos/features/overview/components/TodoList.vue'
 const { t } = useI18n()
+
+const { data: todos, isLoading } = useTodoIndexQuery()
 </script>
 
 <template>
-	<h2>
-		{{ t('shared.todos_title') }}
-	</h2>
-	<AppIcon icon="editIcon" />
+	<AppTitle :title-text="t('shared.todos_title')" />
+	<TodoList
+		:is-loading="isLoading"
+		:todos="todos"
+	/>
 </template>

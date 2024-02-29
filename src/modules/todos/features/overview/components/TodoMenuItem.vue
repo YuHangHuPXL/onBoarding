@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import AppIcon from '@/components/AppIcon.vue'
+import AppIcon from '@/components/Icon/AppIcon.vue'
 import AppText from '@/components/text/AppText.vue'
-import { icons } from '@/icons/icons'
+
+const props = defineProps<{
+	icon: string
+	menuText: string
+}>()
 </script>
 
 <template>
-	<AppIcon :icon="icons.editIcon" />
-	<AppText text="test" />
+	<AppIcon :icon="props.icon" />
+	<AppText :text="props.menuText" />
 </template>

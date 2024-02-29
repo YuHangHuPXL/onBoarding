@@ -15,6 +15,8 @@ const formatedDate = computed<string>(() => {
 </script>
 
 <template>
-	<CalendarIcon />
-	<AppText :text="formatedDate" />
+	<div class="flex items-center gap-1">
+		<CalendarIcon />
+		<AppText :text="formatedDate" />
+	</div>
 </template>

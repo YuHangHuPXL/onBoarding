@@ -18,5 +18,11 @@
     "login_title": "Longindo",
     "not_found_title": "404 baka",
     "todos_title": "絶対にやらないこと "
+  },
+  "todo": {
+    "menu": {
+      "edit_text": "Edito",
+      "remove_text": "Removo"
+    }
   }
 }

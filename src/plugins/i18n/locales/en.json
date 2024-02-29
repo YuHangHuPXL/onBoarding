@@ -18,5 +18,11 @@
     "login_title": "Login",
     "not_found_title": "404 not found",
     "todos_title": "Todos"
+  },
+  "todo": {
+    "menu": {
+      "edit_text": "Edit",
+      "remove_text": "Remove"
+    }
   }
 }

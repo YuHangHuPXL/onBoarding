@@ -1,14 +1,24 @@
 <script setup lang="ts">
-withDefaults(
+import { computed } from 'vue'
+
+const props = withDefaults(
 	defineProps<{
 		titleText: string
+		fontSize: string
 	}>(),
 	{
 		titleText: 'Welcome!',
+		fontSize: '16',
 	}
 )
+
+const fontSizeClass = computed<string>(() => {
+	return `text-[${props.fontSize}px]`
+})
 </script>
 
 <template>
-	<h2 class="text-3xl font-bold">{{ titleText }}</h2>
+	<h1 :class="[fontSizeClass, 'font-bold']">
+		{{ props.titleText }}
+	</h1>
 </template>
