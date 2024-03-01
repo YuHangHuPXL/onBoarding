@@ -1,28 +1,20 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
 
-import DotOptionsButton from '@/components/button/DotOptionsButton.vue'
 import AppDateText from '@/components/text/AppDateText.vue'
 import AppText from '@/components/text/AppText.vue'
 import AppTitle from '@/components/title/AppTitle.vue'
 import type { Todo } from '@/models/todo/todo.model'
-import type { MenuItem } from '@/modules/todos/features/overview/models/todoMenuItem.model'
-const { t } = useI18n()
+import TodoMenu from '@/modules/todos/features/overview/components/TodoMenu.vue'
+import { isDateAfterToday } from '@/utils/dates.util'
 
 const props = defineProps<{
 	todo: Todo
 }>()
 
-const todoMenuItems: MenuItem[] = [
-	{
-		icon: 'editIcon',
-		menuText: t('todo.menu.edit_text'),
-	},
-	{
-		icon: 'trashBin',
-		menuText: t('todo.menu.remove_text'),
-	},
-]
+const hasExceededDeadline = computed<boolean>(() => {
+	return isDateAfterToday(new Date(props.todo.deadline))
+})
 </script>
 
 <template>
@@ -41,10 +33,13 @@ const todoMenuItems: MenuItem[] = [
 				:text="props.todo.description"
 			/>
 			<AppDateText
-				:class="'text-dark-shadowBlue'"
+				class="text-dark-shadowBlue"
+				:class="{ 'text-red-500': hasExceededDeadline }"
 				:date="props.todo.deadline"
 			/>
 		</div>
-		<DotOptionsButton class="pt-1.5" />
+		<div>
+			<TodoMenu />
+		</div>
 	</div>
 </template>
