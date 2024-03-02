@@ -4,6 +4,7 @@ import { todoSchema } from '@/models/todo/todo.model'
 
 interface TodoService {
 	getAll: () => Promise<Todo[]>
+	checkTodo: (todoUuid: string) => Promise<Todo>
 }
 
 export const todoService: TodoService = {
@@ -15,6 +16,11 @@ export const todoService: TodoService = {
 				todoSchema.parse(todo)
 			}
 		}
+
+		return response.data
+	},
+	checkTodo: async (todoUuid: string): Promise<Todo> => {
+		const response = await httpClient.post(`/v1/todos/${todoUuid}/check`)
 
 		return response.data
 	},
