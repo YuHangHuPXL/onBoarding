@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import AppCheckboxInput from '@/components/input/AppCheckboxInput.vue'
 import AppDateText from '@/components/text/AppDateText.vue'
 import AppText from '@/components/text/AppText.vue'
 import AppTitle from '@/components/title/AppTitle.vue'
 import type { Todo } from '@/models/todo/todo.model'
-import TodoMenu from '@/modules/todos/features/overview/components/TodoMenu.vue'
+import TodoItemMenu from '@/modules/todos/features/overview/components/TodoItemMenu.vue'
 import { isDateAfterToday } from '@/utils/dates.util'
+
+const emits = defineEmits<{
+	checkTodo: [value: Todo]
+}>()
 
 const props = defineProps<{
 	todo: Todo
@@ -15,14 +20,15 @@ const props = defineProps<{
 const hasExceededDeadline = computed<boolean>(() => {
 	return isDateAfterToday(new Date(props.todo.deadline))
 })
+
+function onChecked(): void {
+	emits('checkTodo', props.todo)
+}
 </script>
 
 <template>
 	<div class="my-1.5 flex items-start gap-3 rounded-[20px] border bg-light-catskillWhite p-[10px]">
-		<input
-			class="form-checkbox h-5 w-5 shrink-0 rounded-[4px] border-gray-300 bg-transparent text-dark-sanJuan focus:ring-0 focus:ring-offset-0"
-			type="checkbox"
-		/>
+		<AppCheckboxInput @checked="onChecked" />
 		<div class="grow">
 			<AppTitle
 				class="leading-none"
@@ -39,7 +45,7 @@ const hasExceededDeadline = computed<boolean>(() => {
 			/>
 		</div>
 		<div>
-			<TodoMenu />
+			<TodoItemMenu />
 		</div>
 	</div>
 </template>

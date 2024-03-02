@@ -1,10 +1,11 @@
 import httpClient from '@/http/httpClient'
 import type { Todo } from '@/models/todo/todo.model'
 import { todoSchema } from '@/models/todo/todo.model'
+import type { TodoUuid } from '@/models/todo/todoUuid.model'
 
 interface TodoService {
 	getAll: () => Promise<Todo[]>
-	checkTodo: (todoUuid: string) => Promise<Todo>
+	checkTodo: (todoUuid: TodoUuid) => Promise<Todo>
 }
 
 export const todoService: TodoService = {
@@ -17,10 +18,10 @@ export const todoService: TodoService = {
 			}
 		}
 
-		return response.data
+		return response.data.filter((todo: Todo) => !todo.completed)
 	},
-	checkTodo: async (todoUuid: string): Promise<Todo> => {
-		const response = await httpClient.post(`/v1/todos/${todoUuid}/check`)
+	checkTodo: async (todoUuid: TodoUuid): Promise<Todo> => {
+		const response = await httpClient.post(`/v1/todos/${todoUuid.todoUuid}/check`)
 
 		return response.data
 	},

@@ -15,7 +15,7 @@ const router = useRouter()
 
 const errorMessage = ref<string>(t('login.input_placeholder'))
 
-async function handleLogin(data: AuthLoginInput): Promise<void> {
+async function onSubmit(data: AuthLoginInput): Promise<void> {
 	try {
 		await authStore.login(data)
 		await router.push('/todos')
@@ -44,7 +44,7 @@ async function handleLogin(data: AuthLoginInput): Promise<void> {
 			/>
 			<AuthLoginForm
 				class="mb-1"
-				@submit="handleLogin"
+				@submit="onSubmit"
 			/>
 			<div class="inline-flex w-full justify-center">
 				<AppText
