@@ -12,19 +12,21 @@ const checkTodoMutation = useCheckTodoMutation()
 const { data: todos, isLoading } = useTodoIndexQuery()
 
 async function onCheckTodo(todoUuid: TodoUuid): void {
-	try {
-		await checkTodoMutation.mutateAsync(todoUuid)
-	} catch (error) {
-		console.log(error)
-	}
+	await checkTodoMutation.mutateAsync(todoUuid)
 }
 </script>
 
 <template>
-	<AppTitle :title-text="t('shared.todos_title')" />
-	<TodoList
-		:is-loading="isLoading"
-		:todos="todos"
-		@check-todo="onCheckTodo"
-	/>
+	<div class="mt-8 grid-cols-1">
+		<AppTitle
+			class="text-center"
+			:title-text="t('shared.todos_title')"
+		/>
+		<TodoList
+			class="mx-auto"
+			:is-loading="isLoading"
+			:todos="todos"
+			@check-todo="onCheckTodo"
+		/>
+	</div>
 </template>

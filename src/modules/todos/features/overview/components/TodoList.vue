@@ -8,7 +8,7 @@ const emits = defineEmits<{
 }>()
 
 const props = defineProps<{
-	todos: Todo[] | null
+	todos: Todo[] | undefined
 	isLoading: boolean
 }>()
 

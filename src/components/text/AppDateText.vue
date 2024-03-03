@@ -6,7 +6,7 @@ import CalendarIcon from '@/icons/CalendarIcon.vue'
 import { formatDate } from '@/utils/dates.util'
 
 const props = defineProps<{
-	date: Date
+	date: string
 }>()
 
 const formatedDate = computed<string>(() => {
