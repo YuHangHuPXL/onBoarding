@@ -1,0 +1,22 @@
+{
+  "login": {
+    "bad_credentials_message": "本気ですか",
+    "continue": "クリック",
+    "email_label": "郵便",
+    "forgot_password": "バカじゃないの?",
+    "input_placeholder": "郵便",
+    "no_account_question": "なぜまだアカウントを作成していないのですか?",
+    "no_account_suggestion": "バナナ!",
+    "password_label": "数独",
+    "password_placeholder": "数独",
+    "username_label": "Usernamedo",
+    "welcome_message": "私はこの言葉を聞いています。",
+    "welcome_title": "さようなら!"
+  },
+  "shared": {
+    "app_text_placeholder": " 私はこの言葉を聞いています。素晴らしいです。",
+    "login_title": "Longindo",
+    "not_found_title": "404 baka",
+    "todos_title": "絶対にやらないこと "
+  }
+}

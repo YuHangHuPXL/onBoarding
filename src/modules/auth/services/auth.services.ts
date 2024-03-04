@@ -23,9 +23,9 @@ function encodeQueryData(data: Record<string, string>): URLSearchParams {
 }
 
 enum GrantType {
-	password = 'password',
-	authorization_code = 'authorization_code',
-	client_credentials = 'client_credentials',
+	PASSWORD = 'password',
+	AUTHORIZATION_CODE = 'authorization_code',
+	CLIENT_CREDENTIALS = 'client_credentials',
 }
 
 export const authService: AuthService = {
@@ -43,7 +43,7 @@ export const authService: AuthService = {
 		const formData = encodeQueryData({
 			client_id: import.meta.env.VITE_CLIENT_ID,
 			client_secret: import.meta.env.VITE_CLIENT_SECRET,
-			grant_type: GrantType.password,
+			grant_type: GrantType.PASSWORD,
 			password: password,
 			username: username,
 			scope: 'read write',
