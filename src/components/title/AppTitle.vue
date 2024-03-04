@@ -4,21 +4,21 @@ import { computed } from 'vue'
 const props = withDefaults(
 	defineProps<{
 		titleText: string
-		fontSize: string
+		fontSize?: string
 	}>(),
 	{
 		titleText: 'Welcome!',
-		fontSize: '16',
+		fontSize: '20px',
 	}
 )
 
-const fontSizeClass = computed<string>(() => {
-	return `text-[${props.fontSize}px]`
+const calculatedFontSize = computed<string>(() => {
+	return `text-[${props.fontSize}]`
 })
 </script>
 
 <template>
-	<h1 :class="[fontSizeClass, 'font-bold']">
+	<h1 :class="['font-bold', calculatedFontSize]">
 		{{ props.titleText }}
 	</h1>
 </template>

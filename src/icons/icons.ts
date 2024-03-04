@@ -6,6 +6,7 @@ export const icons = {
 	dotOptions: import('@/icons/DotOptionsIcon.vue'),
 	emptySquare: import('@/icons/EmptySquareIcon.vue'),
 	checkedSquare: import('@/icons/CheckedSquareIcon.vue'),
+	plus: import('@/icons/PlusIcon.vue'),
 } satisfies Record<string, Component>
 
 export type Icon = keyof typeof icons
