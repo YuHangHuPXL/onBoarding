@@ -3,10 +3,10 @@ import { useI18n } from 'vue-i18n'
 
 import ArrowRightIcon from '@/icons/ArrowRightIcon.vue'
 
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		hasInputFilledIn: boolean
-		hasRightArrow: boolean
+		hasRightArrow?: boolean
 		buttonText: string
 	}>(),
 	{
@@ -32,7 +32,7 @@ const { t } = useI18n()
 		:disabled="hasInputFilledIn"
 		@click="handleSubmit"
 	>
-		<span>{{ buttonText }}</span>
+		<span>{{ props.buttonText }}</span>
 		<ArrowRightIcon v-if="hasRightArrow" />
 	</button>
 </template>

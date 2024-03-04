@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		titleText: string
 	}>(),
@@ -10,5 +10,5 @@ withDefaults(
 </script>
 
 <template>
-	<h2 class="text-3xl font-bold">{{ titleText }}</h2>
+	<h2 class="text-3xl font-bold">{{ props.titleText }}</h2>
 </template>

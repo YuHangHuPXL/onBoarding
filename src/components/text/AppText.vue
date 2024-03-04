@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
-withDefaults(
+const props = withDefaults(
 	defineProps<{
 		text: string
 	}>(),
@@ -13,5 +13,5 @@ withDefaults(
 </script>
 
 <template>
-	<h2>{{ text }}</h2>
+	<h2>{{ props.text }}</h2>
 </template>
